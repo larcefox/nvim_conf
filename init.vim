@@ -131,7 +131,7 @@ lua <<EOF
 EOF
 
 
-colorscheme gruvbox
+colorscheme ron 
 " colorscheme OceanicNext
 "let g:material_terminal_italics = 1
 " variants: default, palenight, ocean, lighter, darker, default-community,
@@ -260,3 +260,4 @@ so /home/larce/.config/nvim/plug-config/signify.vim
 
 " default updatetime 4000ms is not good for async update
 set updatetime=100
+nmap <F6> :NERDTreeToggle<CR>
