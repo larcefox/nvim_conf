@@ -15,8 +15,11 @@ set encoding=utf-8
 set number
 set noswapfile
 set scrolloff=7
-
+set relativenumber 
 set tabstop=4
+set nu
+set hidden
+set guicursor=
 set softtabstop=4
 set shiftwidth=4
 set expandtab
