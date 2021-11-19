@@ -32,6 +32,7 @@ inoremap jk <esc>
 
 
 call plug#begin('~/.vim/plugged')
+Plug 'shime/vim-livedown'
 Plug 'neovim/nvim-lspconfig'
 Plug 'hrsh7th/cmp-nvim-lsp'
 Plug 'hrsh7th/cmp-buffer'
@@ -264,3 +265,4 @@ so /home/larce/.config/nvim/plug-config/signify.vim
 " default updatetime 4000ms is not good for async update
 set updatetime=100
 nmap <F6> :NERDTreeToggle<CR>
+nnoremap <F7> :LivedownToggle<CR>
