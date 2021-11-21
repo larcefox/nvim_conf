@@ -135,7 +135,7 @@ lua <<EOF
 EOF
 
 
-colorscheme ron 
+colorscheme default 
 " colorscheme OceanicNext
 "let g:material_terminal_italics = 1
 " variants: default, palenight, ocean, lighter, darker, default-community,
