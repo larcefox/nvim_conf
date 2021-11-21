@@ -26,6 +26,7 @@ set expandtab
 set autoindent
 set fileformat=unix
 filetype indent on      " load filetype-specific indent files
+filetype plugin on
 
 inoremap jk <esc>
 
@@ -40,8 +41,15 @@ Plug 'hrsh7th/cmp-path'
 Plug 'hrsh7th/cmp-cmdline'
 Plug 'hrsh7th/nvim-cmp'
 Plug 'preservim/nerdtree'
+
 " Ack plugin
-" Plug 'mileszs/ack.vim'
+" Plug 'mileszs/ack'
+
+"Autopair plugin
+Plug 'jiangmiao/auto-pairs' 
+
+"Group line comment
+Plug 'preservim/nerdcommenter'
 
 " For vsnip users.
 Plug 'hrsh7th/cmp-vsnip'
@@ -265,4 +273,7 @@ so /home/larce/.config/nvim/plug-config/signify.vim
 " default updatetime 4000ms is not good for async update
 set updatetime=100
 nmap <F6> :NERDTreeToggle<CR>
+nnoremap <F5> :NERDTreeRefreshRoot<CR>
 nnoremap <F7> :LivedownToggle<CR>
+nmap <C-_> <Plug>NERDCommenterToggle
+vmap <C-_>  <Plug>NERDCommenterToggle<CR>gv
