@@ -42,6 +42,9 @@ Plug 'hrsh7th/cmp-cmdline'
 Plug 'hrsh7th/nvim-cmp'
 Plug 'preservim/nerdtree'
 
+" Plugin fore markdown
+Plug 'dhruvasagar/vim-table-mode'
+
 " Ack plugin
 " Plug 'mileszs/ack'
 
@@ -143,7 +146,7 @@ lua <<EOF
 EOF
 
 
-colorscheme default 
+colorscheme gruvbox 
 " colorscheme OceanicNext
 "let g:material_terminal_italics = 1
 " variants: default, palenight, ocean, lighter, darker, default-community,
@@ -260,9 +263,9 @@ autocmd VimEnter * NERDTree | if argc() > 0 || exists("s:std_in") | wincmd p | e
 autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
 
 " Start NERDTree when Vim starts with a directory argument.
- autocmd StdinReadPre * let s:std_in=1
- autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists('s:std_in') |
-     \ execute 'NERDTree' argv()[0] | wincmd p | enew | execute 'cd '.argv()[0] | endif
+ " autocmd StdinReadPre * let s:std_in=1
+ " autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists('s:std_in') |
+ "    \ execute 'NERDTree' argv()[0] | wincmd p | enew | execute 'cd '.argv()[0] | endif
 
  " Open the existing NERDTree on each new tab.
 autocmd BufWinEnter * if getcmdwintype() == '' | silent NERDTreeMirror | endif
@@ -277,3 +280,6 @@ nnoremap <F5> :NERDTreeRefreshRoot<CR>
 nnoremap <F7> :LivedownToggle<CR>
 nmap <C-_> <Plug>NERDCommenterToggle
 vmap <C-_>  <Plug>NERDCommenterToggle<CR>gv
+nmap ,b Obreakpoint()<ESC>
+nmap ,md :TableModeToggle<CR>
+nmap .b :%s/breakpoint()\n//g<ESC>,<space>
