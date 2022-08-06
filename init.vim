@@ -42,6 +42,13 @@ Plug 'hrsh7th/cmp-cmdline'
 Plug 'hrsh7th/nvim-cmp'
 Plug 'preservim/nerdtree'
 
+" JavaScript plugin
+Plug 'pangloss/vim-javascript'
+
+" Status line
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+
 " Plugin fore markdown
 Plug 'dhruvasagar/vim-table-mode'
 
@@ -82,6 +89,9 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-rhubarb'
 Plug 'junegunn/gv.vim'
 call plug#end()
+
+" set tmux status lina like aireline theme
+source $HOME/.config/nvim/plug-config/airline.vim
 
 set completeopt=menu,menuone,noselect
 
@@ -251,8 +261,8 @@ map gw :Bclose<cr>
 set colorcolumn=79
 
 " run current script with python3 by CTRL+R in command and insert mode
-autocmd FileType python map <buffer> <C-r> :w<CR>:exec '!python3' shellescape(@%, 1)<CR>
-autocmd FileType python imap <buffer> <C-r> <esc>:w<CR>:exec '!python3' shellescape(@%, 1)<CR>
+autocmd FileType python map <buffer> <F9> :w<CR>:exec '!python3' shellescape(@%, 1)<CR>
+autocmd FileType python imap <buffer> <F9> <esc>:w<CR>:exec '!python3' shellescape(@%, 1)<CR>
 
 " /////////////////////////////LARCEF/////////////////////////////////////////
 " Start NERDTree. If a file is specified, move the cursor to its window.
@@ -274,7 +284,8 @@ autocmd BufWinEnter * if getcmdwintype() == '' | silent NERDTreeMirror | endif
 so /home/larce/.config/nvim/plug-config/signify.vim 
 
 " default updatetime 4000ms is not good for async update
-set updatetime=100
+" set updatetime=100utocmd
+autocmd TextChanged,TextChangedI <buffer> silent write
 nmap <F6> :NERDTreeToggle<CR>
 nnoremap <F5> :NERDTreeRefreshRoot<CR>
 nnoremap <F7> :LivedownToggle<CR>
@@ -283,3 +294,7 @@ vmap <C-_>  <Plug>NERDCommenterToggle<CR>gv
 nmap ,b Obreakpoint()<ESC>
 nmap ,md :TableModeToggle<CR>
 nmap .b :%s/breakpoint()\n//g<ESC>,<space>
+
+" new line in normal mode
+nmap oo o<Esc>k
+nmap OO O<Esc>j
