@@ -17,7 +17,6 @@ set noswapfile
 set scrolloff=7
 set relativenumber 
 set tabstop=4
-set nu
 set hidden
 set guicursor=
 set softtabstop=4
@@ -30,7 +29,9 @@ filetype plugin on
 
 inoremap jk <esc>
 
-
+nnoremap <Leader>pi :PlugInstall<CR>
+nnoremap <Leader>pu :PlugUpdate<CR>
+nnoremap <Leader>pc :PlugClean<CR>
 
 call plug#begin('~/.vim/plugged')
 Plug 'shime/vim-livedown'
@@ -253,7 +254,6 @@ endfunction
 command! -bang -complete=buffer -nargs=? Bclose call <SID>Bclose(<q-bang>, <q-args>)
 nnoremap <silent> <Leader>bd :Bclose<CR>
 
-
 map gn :bn<cr>
 map gp :bp<cr>
 map gw :Bclose<cr>
@@ -285,7 +285,9 @@ so /home/larce/.config/nvim/plug-config/signify.vim
 
 " default updatetime 4000ms is not good for async update
 " set updatetime=100utocmd
-autocmd TextChanged,TextChangedI <buffer> silent write
+" autocmd TextChanged,TextChangedI <buffer> silent write
+autocmd BufWritePre * :%s/\s\+$//e  " убирает пробелы в конце строк
+autocmd InsertLeave,TextChanged * silent! wall  " автосейв глобально
 nmap <F6> :NERDTreeToggle<CR>
 "nnoremap <F5> :NERDTreeRefreshRoot<CR>
 nnoremap <F7> :LivedownToggle<CR>
@@ -295,7 +297,7 @@ nmap ,b Obreakpoint()<ESC>
 nmap ,md :TableModeToggle<CR>
 nmap .b :%s/breakpoint()\n//g<ESC>,<space>
 
-# always copy to the system clipboard
+" always copy to the system clipboard
 set clipboard=unnamedplus
 
 " new line in normal mode
