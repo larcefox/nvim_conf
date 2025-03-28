@@ -24,7 +24,7 @@ set softtabstop=4
 set shiftwidth=4
 set expandtab
 set autoindent
-set fileformat=unix
+" set fileformat=unix
 filetype indent on      " load filetype-specific indent files
 filetype plugin on
 
@@ -287,7 +287,7 @@ so /home/larce/.config/nvim/plug-config/signify.vim
 " set updatetime=100utocmd
 autocmd TextChanged,TextChangedI <buffer> silent write
 nmap <F6> :NERDTreeToggle<CR>
-nnoremap <F5> :NERDTreeRefreshRoot<CR>
+"nnoremap <F5> :NERDTreeRefreshRoot<CR>
 nnoremap <F7> :LivedownToggle<CR>
 nmap <C-_> <Plug>NERDCommenterToggle
 vmap <C-_>  <Plug>NERDCommenterToggle<CR>gv
@@ -295,6 +295,11 @@ nmap ,b Obreakpoint()<ESC>
 nmap ,md :TableModeToggle<CR>
 nmap .b :%s/breakpoint()\n//g<ESC>,<space>
 
+# always copy to the system clipboard
+set clipboard=unnamedplus
+
 " new line in normal mode
 nmap oo o<Esc>k
 nmap OO O<Esc>j
+tnoremap <Esc> <C-\><C-n>
+
